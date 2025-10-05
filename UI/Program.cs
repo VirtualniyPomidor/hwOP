@@ -29,7 +29,7 @@ public static class Program
         Charts.ShowHeatmap(HeatmapTask.GetBirthsPerDateHeatmap(namesData), "Тепловая карта");
         Charts.ShowHistogram(HistogramTask.GetBirthsPerDayHistogram(namesData, "юрий"), "Юрий");
         Charts.ShowHistogram(HistogramTask.GetBirthsPerDayHistogram(namesData, "владимир"), "Владимир");
-        Charts.ShowLinePlot(ExtraTask.GetAverageBirthsPerDayByMonth(namesData), "Сезонность");
+        Charts.ShowHistogram(ExtraTask.GetAverageBirthsPerMonth(namesData), "Сезонность");
     }
 
 

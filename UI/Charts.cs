@@ -79,47 +79,4 @@ internal static class Charts
         MainWindow.Tabs.Add(new TabItemModel(title, model));
         MainWindow.w.InitializeComponent();
     }
-
-    public static void ShowLinePlot(double[] monthlyAverages, string title)
-    {
-        var model = new PlotModel { Title = title };
-
-        var monthLabels = new[] { "Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек" };
-
-        var monthAxis = new CategoryAxis
-        {
-            Position = AxisPosition.Bottom,
-            ItemsSource = monthLabels,
-            Title = "Месяц"
-        };
-
-        model.Axes.Add(monthAxis);
-
-        var barSeriesManager = new BarSeriesManager(monthAxis, monthAxis, new[] { new BarSeries() });
-        barSeriesManager.Update();
-
-        model.Axes.Add(new LinearAxis
-        {
-            Position = AxisPosition.Left,
-            Title = "Среднее число рождений в день",
-            Minimum = monthlyAverages.Min() * 0.98,
-            StringFormat = "0.0"
-        });
-
-        var lineSeries = new LineSeries
-        {
-            MarkerType = MarkerType.Circle,
-            MarkerSize = 4,
-        };
-
-        for (var i = 0; i < monthlyAverages.Length; i++)
-        {
-            lineSeries.Points.Add(new DataPoint(i, monthlyAverages[i]));
-        }
-
-        model.Series.Add(lineSeries);
-
-        MainWindow.Tabs.Add(new TabItemModel(title, model));
-        MainWindow.w.InitializeComponent();
-    }
 }

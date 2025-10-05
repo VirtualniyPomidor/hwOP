@@ -5,7 +5,7 @@ namespace Names;
 
 internal static class ExtraTask
 {
-    public static double[] GetAverageBirthsPerDayByMonth(NameData[] names)
+    public static HistogramData GetAverageBirthsPerMonth(NameData[] names)
     {
         var birthsPerYearMonth = new Dictionary<(int Year, int Month), int>();
 
@@ -33,6 +33,8 @@ internal static class ExtraTask
             if (monthCount[i] != 0)
                 result[i] = monthBirthsSum[i] / monthCount[i];
 
-        return result;
+        var monthLabels = new[] { "Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек" };
+
+        return new HistogramData("Сезонность рождения детей", monthLabels, result);
     }
 }
